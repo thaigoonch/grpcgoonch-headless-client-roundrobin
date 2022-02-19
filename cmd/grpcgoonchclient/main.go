@@ -19,9 +19,12 @@ func main() {
 	}
 	defer conn.Close()
 	c := grpcgoonch.NewServiceClient(conn)
+
+	text := "encrypt me"
+	key := []byte("#89er@jdks$jmf_d")
 	request := grpcgoonch.Request{
-		Text: "Hello from Goonch Client!",
-		Key:  "key",
+		Text: text,
+		Key:  key,
 	}
 
 	response, err := c.CryptoRequest(context.Background(), &request)
