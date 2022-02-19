@@ -15,5 +15,5 @@ spec:
         app: grpcgoonchclient
     spec:
       containers:
-      - name: app
+      - name: grpcgoonchclient
         image: thaigoonch/grpcgoonchclient
