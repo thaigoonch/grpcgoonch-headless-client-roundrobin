@@ -19,14 +19,15 @@ func main() {
 	}
 	defer conn.Close()
 	c := grpcgoonch.NewServiceClient(conn)
-	message := grpcgoonch.Message{
-		Body: "Hello from Goonch Client!",
+	request := grpcgoonch.Request{
+		Text: "Hello from Goonch Client!",
+		Key:  "key",
 	}
 
-	response, err := c.SayHello(context.Background(), &message)
+	response, err := c.CryptoRequest(context.Background(), &request)
 	if err != nil {
-		log.Fatalf("Error when calling SayHello(): %v", err)
+		log.Fatalf("Error when calling CryptoRequest(): %v", err)
 	}
 
-	log.Printf("Response from Server: %s", response.Body)
+	log.Printf("Response from Goonch Server: %s", response.Result)
 }

@@ -3,7 +3,7 @@ module github.com/thaigoonch/grpcgoonchclient
 go 1.17
 
 require (
-	github.com/thaigoonch/grpcgoonch v0.0.0-20220218215307-8f6b5b7ee709
+	github.com/thaigoonch/grpcgoonch v0.0.0-20220219200949-8725c1c18dc1
 	golang.org/x/net v0.0.0-20220127200216-cd36cc0744dd
 	google.golang.org/grpc v1.44.0
 )
