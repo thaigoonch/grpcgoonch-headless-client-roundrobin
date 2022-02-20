@@ -17,5 +17,4 @@ spec:
       containers:
       - name: grpcgoonchclient
         image: thaigoonch/grpcgoonchclient
-        ports:
-        - containerPort: 9000
+        hostname: host

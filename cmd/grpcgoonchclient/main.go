@@ -16,7 +16,7 @@ func main() {
 	opts := []grpc.DialOption{
 		grpc.WithInsecure(),
 	}
-	conn, err := grpc.Dial(fmt.Sprintf("127.0.0.1:%d", port), opts...)
+	conn, err := grpc.Dial(fmt.Sprintf("grpcgoonch:%d", port), opts...)
 	if err != nil {
 		grpclog.Fatalf("Could not connect on port %d: %v", port, err)
 	}
