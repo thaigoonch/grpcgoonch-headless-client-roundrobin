@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: grpcgoonchclient
+  name: grpcgoonchclient-deployment
   labels:
     app: grpcgoonchclient
 spec:
@@ -17,3 +17,5 @@ spec:
       containers:
       - name: grpcgoonchclient
         image: thaigoonch/grpcgoonchclient
+        ports:
+        - containerPort: 9000

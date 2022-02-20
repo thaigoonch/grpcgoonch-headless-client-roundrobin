@@ -7,17 +7,21 @@ import (
 	grpcgoonch "github.com/thaigoonch/grpcgoonch/service"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/grpclog"
 )
 
 func main() {
-	var conn *grpc.ClientConn
 
 	port := 9000
-	conn, err := grpc.Dial(fmt.Sprintf(":%d", port), grpc.WithInsecure())
+	opts := []grpc.DialOption{
+		grpc.WithInsecure(),
+	}
+	conn, err := grpc.Dial(fmt.Sprintf("127.0.0.1:%d", port), opts...)
 	if err != nil {
-		log.Fatalf("Could not connect on port %d: %v", port, err)
+		grpclog.Fatalf("Could not connect on port %d: %v", port, err)
 	}
 	defer conn.Close()
+
 	c := grpcgoonch.NewServiceClient(conn)
 
 	text := "encrypt me"
@@ -29,7 +33,7 @@ func main() {
 
 	response, err := c.CryptoRequest(context.Background(), &request)
 	if err != nil {
-		log.Fatalf("Error when calling CryptoRequest(): %v", err)
+		grpclog.Fatalf("Error when calling CryptoRequest(): %v", err)
 	}
 
 	log.Printf("Response from Goonch Server: %s", response.Result)
