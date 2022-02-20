@@ -1,4 +1,4 @@
-FROM golang:1.17 AS builder
+FROM golang:1.17
 WORKDIR /app
 COPY . /app
 
@@ -6,6 +6,5 @@ ENV GOOS=linux
 
 RUN chmod +x ./generate.sh && \
     ./generate.sh && \
-    CGO_ENABLED=0 GOOS=linux \
     go install ./...
-CMD ["/bin/go/grpcgoonchclient"]
+CMD ["/go/bin/grpcgoonchclient"]
