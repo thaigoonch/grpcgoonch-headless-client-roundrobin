@@ -12,11 +12,11 @@ import (
 
 func main() {
 
-	port := 30123
+	port := 9000
 	opts := []grpc.DialOption{
 		grpc.WithInsecure(),
 	}
-	conn, err := grpc.Dial(fmt.Sprintf("grpcgoonch:%d", port), opts...)
+	conn, err := grpc.Dial(fmt.Sprintf(":%d", port), opts...)
 	if err != nil {
 		grpclog.Fatalf("Could not connect on port %d: %v", port, err)
 	}
