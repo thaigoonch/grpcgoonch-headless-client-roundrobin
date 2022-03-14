@@ -12,6 +12,6 @@ spec:
     spec:
       containers:
       - name: grpcgoonchclient
-        image: thaigoonch/grpcgoonchclient:1.6
+        image: thaigoonch/grpcgoonchclient:1.7
       restartPolicy: Never
   backoffLimit: 4
