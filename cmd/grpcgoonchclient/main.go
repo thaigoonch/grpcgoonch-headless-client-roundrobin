@@ -13,11 +13,12 @@ import (
 func main() {
 
 	port := 9000
+	host := "grpcgoonch-service"
 	opts := []grpc.DialOption{
 		grpc.WithInsecure(),
 		grpc.WithDefaultServiceConfig(`{"loadBalancingPolicy":"round_robin"}`),
 	}
-	conn, err := grpc.Dial(fmt.Sprintf("grpcgoonch-service:%d", port), opts...)
+	conn, err := grpc.Dial(fmt.Sprintf("dns:///%s:%d", host, port), opts...)
 	if err != nil {
 		grpclog.Fatalf("Could not connect on port %d: %v", port, err)
 	}
