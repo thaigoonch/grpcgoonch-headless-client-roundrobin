@@ -13,7 +13,7 @@ import (
 )
 
 func doClientThings() {
-	for {
+	for i := 0; i < 200; i++ {
 		port := 9000
 		host := "grpcgoonch-service"
 		opts := []grpc.DialOption{
