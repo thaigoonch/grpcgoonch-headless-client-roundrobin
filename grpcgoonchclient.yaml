@@ -16,4 +16,4 @@ spec:
     spec:
       containers:
       - name: grpcgoonchclient
-        image: thaigoonch/grpcgoonchclient:1.0
+        image: thaigoonch/grpcgoonchclient:1.1
