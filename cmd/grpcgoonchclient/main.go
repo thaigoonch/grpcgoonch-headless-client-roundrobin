@@ -15,6 +15,7 @@ func main() {
 	port := 9000
 	opts := []grpc.DialOption{
 		grpc.WithInsecure(),
+		grpc.WithDefaultServiceConfig(`{"loadBalancingPolicy":"round_robin"}`),
 	}
 	conn, err := grpc.Dial(fmt.Sprintf("grpcgoonch-service:%d", port), opts...)
 	if err != nil {
