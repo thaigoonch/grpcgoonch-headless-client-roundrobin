@@ -1,19 +1,34 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: CronJob
 metadata:
-  name: grpcgoonchclient-deployment
+  name: grpcgoonchclient-cronjob1
   labels:
     app: grpcgoonchclient
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: grpcgoonchclient
-  template:
+  schedule: "* * * * *"
+  jobTemplate:
     metadata:
       labels:
         app: grpcgoonchclient
     spec:
       containers:
-      - name: grpcgoonchclient
+      - name: grpcgoonchclient1
         image: thaigoonch/grpcgoonchclient:1.3
+        imagePullPolicy: IfNotPresent
+        restartPolicy: OnFailure
+      - name: grpcgoonchclient2
+        image: thaigoonch/grpcgoonchclient:1.3
+        imagePullPolicy: IfNotPresent
+        restartPolicy: OnFailure
+      - name: grpcgoonchclient3
+        image: thaigoonch/grpcgoonchclient:1.3
+        imagePullPolicy: IfNotPresent
+        restartPolicy: OnFailure
+      - name: grpcgoonchclient4
+        image: thaigoonch/grpcgoonchclient:1.3
+        imagePullPolicy: IfNotPresent
+        restartPolicy: OnFailure
+      - name: grpcgoonchclient5
+        image: thaigoonch/grpcgoonchclient:1.3
+        imagePullPolicy: IfNotPresent
+        restartPolicy: OnFailure
