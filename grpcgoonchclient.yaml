@@ -15,47 +15,47 @@ spec:
         spec:
           containers:
           - name: grpcgoonchclient1
-            image: thaigoonch/grpcgoonchclient:1.3
+            image: thaigoonch/grpcgoonchclient:1.4
             imagePullPolicy: IfNotPresent
           - name: grpcgoonchclient2
-            image: thaigoonch/grpcgoonchclient:1.3
+            image: thaigoonch/grpcgoonchclient:1.4
             imagePullPolicy: IfNotPresent
           - name: grpcgoonchclient3
-            image: thaigoonch/grpcgoonchclient:1.3
+            image: thaigoonch/grpcgoonchclient:1.4
             imagePullPolicy: IfNotPresent
           - name: grpcgoonchclient4
-            image: thaigoonch/grpcgoonchclient:1.3
+            image: thaigoonch/grpcgoonchclient:1.4
             imagePullPolicy: IfNotPresent
           - name: grpcgoonchclient5
-            image: thaigoonch/grpcgoonchclient:1.3
+            image: thaigoonch/grpcgoonchclient:1.4
             imagePullPolicy: IfNotPresent
           - name: grpcgoonchclient6
-            image: thaigoonch/grpcgoonchclient:1.3
+            image: thaigoonch/grpcgoonchclient:1.4
             imagePullPolicy: IfNotPresent
           - name: grpcgoonchclient7
-            image: thaigoonch/grpcgoonchclient:1.3
+            image: thaigoonch/grpcgoonchclient:1.4
             imagePullPolicy: IfNotPresent
           - name: grpcgoonchclient8
-            image: thaigoonch/grpcgoonchclient:1.3
+            image: thaigoonch/grpcgoonchclient:1.4
             imagePullPolicy: IfNotPresent
           - name: grpcgoonchclient9
-            image: thaigoonch/grpcgoonchclient:1.3
+            image: thaigoonch/grpcgoonchclient:1.4
             imagePullPolicy: IfNotPresent
           - name: grpcgoonchclient10
-            image: thaigoonch/grpcgoonchclient:1.3
+            image: thaigoonch/grpcgoonchclient:1.4
             imagePullPolicy: IfNotPresent
           - name: grpcgoonchclient11
-            image: thaigoonch/grpcgoonchclient:1.3
+            image: thaigoonch/grpcgoonchclient:1.4
             imagePullPolicy: IfNotPresent
           - name: grpcgoonchclient12
-            image: thaigoonch/grpcgoonchclient:1.3
+            image: thaigoonch/grpcgoonchclient:1.4
             imagePullPolicy: IfNotPresent
           - name: grpcgoonchclient13
-            image: thaigoonch/grpcgoonchclient:1.3
+            image: thaigoonch/grpcgoonchclient:1.4
             imagePullPolicy: IfNotPresent
           - name: grpcgoonchclient14
-            image: thaigoonch/grpcgoonchclient:1.3
+            image: thaigoonch/grpcgoonchclient:1.4
             imagePullPolicy: IfNotPresent
           - name: grpcgoonchclient15
-            image: thaigoonch/grpcgoonchclient:1.3
+            image: thaigoonch/grpcgoonchclient:1.4
           restartPolicy: OnFailure
