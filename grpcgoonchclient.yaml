@@ -10,11 +10,8 @@ spec:
       labels:
         app: grpcgoonchclient
     spec:
-      template:
-        spec:
-          containers:
-          - name: grpcgoonchclient1
-            image: thaigoonch/grpcgoonchclient:1.5
-            imagePullPolicy: IfNotPresent
-          restartPolicy: OnFailure
-      backoffLimit: 4
+      containers:
+      - name: grpcgoonchclient
+        image: thaigoonch/grpcgoonchclient:1.5
+      restartPolicy: Never
+    backoffLimit: 4
