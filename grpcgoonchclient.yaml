@@ -1,7 +1,7 @@
-apiVersion: batch/v1
+apiVersion: apps/v1
 kind: CronJob
 metadata:
-  name: grpcgoonchclient-cronjob1
+  name: grpcgoonchclient-cronjob
   labels:
     app: grpcgoonchclient
 spec:
@@ -15,10 +15,18 @@ spec:
         spec:
           containers:
           - name: grpcgoonchclient1
+            image: thaigoonch/grpcgoonchclient:1.3
+            imagePullPolicy: IfNotPresent
           - name: grpcgoonchclient2
+            image: thaigoonch/grpcgoonchclient:1.3
+            imagePullPolicy: IfNotPresent
           - name: grpcgoonchclient3
+            image: thaigoonch/grpcgoonchclient:1.3
+            imagePullPolicy: IfNotPresent
           - name: grpcgoonchclient4
-          - name: grpcgoonchclient5
-          image: thaigoonch/grpcgoonchclient:1.3
-          imagePullPolicy: IfNotPresent
+            image: thaigoonch/grpcgoonchclient:1.3
+            imagePullPolicy: IfNotPresent
+          - name: grpcgoonchclient1
+            image: thaigoonch/grpcgoonchclient:1.3
+            imagePullPolicy: IfNotPresent
           restartPolicy: OnFailure
