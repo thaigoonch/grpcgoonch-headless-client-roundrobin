@@ -14,4 +14,4 @@ spec:
       - name: grpcgoonchclient
         image: thaigoonch/grpcgoonchclient:1.5
       restartPolicy: Never
-    backoffLimit: 4
+  backoffLimit: 4
