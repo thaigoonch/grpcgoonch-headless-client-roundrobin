@@ -50,8 +50,8 @@ github.com/rogpeppe/fastuuid v1.2.0/go.mod h1:jVj6XXZzXRy/MSR5jhDC/2q6DgLz+nrA6L
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.5.1/go.mod h1:5W2xD1RspED5o8YsWQXVCued0rvSQ+mT+I5cxcmMvtA=
 github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
-github.com/thaigoonch/grpcgoonch v0.0.0-20220219204416-24a202c36ce8 h1:gxzEZs66ujsAGN5UYhuLMs7BWY/6oTBDZHQBofzZuIM=
-github.com/thaigoonch/grpcgoonch v0.0.0-20220219204416-24a202c36ce8/go.mod h1:u05NX83jgUoBwypllVnv+iO+AoUTNnVL3fvtQ03pmZw=
+github.com/thaigoonch/grpcgoonch v0.0.0-20220314010340-77b2ca6db294 h1:yFUTKh5hfft2y9pq1cV2/gKiQD7wS0a866SwowwXdL8=
+github.com/thaigoonch/grpcgoonch v0.0.0-20220314010340-77b2ca6db294/go.mod h1:u05NX83jgUoBwypllVnv+iO+AoUTNnVL3fvtQ03pmZw=
 go.opentelemetry.io/proto/otlp v0.7.0/go.mod h1:PqfVotwruBrMGOCsRd/89rSnXhoiJIqeYNgFYFoEGnI=
 golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=
 golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9/go.mod h1:LzIPMQfyMNhhGPhUkYOs5KpL4U8rLKemX1yGLhDgUto=
