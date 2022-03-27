@@ -12,11 +12,11 @@ spec:
         app: grpcgoonchclient
     spec:
       template:
-        nodeSelector:
-          goonchrole: "nonserver"
         spec:
           containers:
           - name: grpcgoonchclient
             image: thaigoonch/grpcgoonchclient:1.12
             imagePullPolicy: IfNotPresent
           restartPolicy: Never
+          nodeSelector:
+            goonchrole: "nonserver"
