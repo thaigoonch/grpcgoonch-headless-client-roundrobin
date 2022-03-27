@@ -1,19 +1,22 @@
 apiVersion: batch/v1
-kind: Job
+kind: CronJob
 metadata:
-  name: grpcgoonchclient-job
+  name: grpcgoonchclient-cronjob
   labels:
     app: grpcgoonchclient
 spec:
-  template:
+  schedule: "0/5 * * * *"
+  jobTemplate:
     metadata:
       labels:
         app: grpcgoonchclient
     spec:
-      containers:
-      - name: grpcgoonchclient
-        image: thaigoonch/grpcgoonchclient:1.12
-      restartPolicy: Never
-  backoffLimit: 4
-  nodeSelector:
-    goonchrole: "nonserver"
+      template:
+        nodeSelector:
+          goonchrole: "nonserver"
+        spec:
+          containers:
+          - name: grpcgoonchclient
+            image: thaigoonch/grpcgoonchclient:1.12
+            imagePullPolicy: IfNotPresent
+          restartPolicy: Never
