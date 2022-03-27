@@ -9,6 +9,7 @@ import (
 	grpcgoonch "github.com/thaigoonch/grpcgoonch/service"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/balancer/roundrobin"
 	"google.golang.org/grpc/grpclog"
 )
 
@@ -18,7 +19,7 @@ func doClientThings() {
 		host := "grpcgoonch-service"
 		opts := []grpc.DialOption{
 			grpc.WithInsecure(),
-			grpc.WithDefaultServiceConfig(`{"loadBalancingPolicy":"round_robin"}`),
+			grpc.WithBalancerName(roundrobin.Name),
 		}
 		conn, err := grpc.Dial(fmt.Sprintf("dns:///%s:%d", host, port), opts...)
 		if err != nil {
