@@ -3,9 +3,13 @@ package main
 import (
 	"fmt"
 	"log"
+	"net/http"
 	"sync"
 	"time"
 
+	grpc_prometheus "github.com/grpc-ecosystem/go-grpc-prometheus"
+	"github.com/prometheus/client_golang/prometheus"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 	grpcgoonch "github.com/thaigoonch/grpcgoonch/service"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
@@ -13,10 +17,27 @@ import (
 )
 
 func doClientThings() {
+	reg := prometheus.NewRegistry()
+	grpcMetrics := grpc_prometheus.NewClientMetrics()
+	reg.MustRegister(grpcMetrics)
+
+	// Create an http server for prometheus
+	httpServer := &http.Server{
+		Handler: promhttp.HandlerFor(reg, promhttp.HandlerOpts{}),
+		Addr:    fmt.Sprintf("0.0.0.0:%d", 9094)}
+
+	// Start http server for prometheus
+	go func() {
+		if err := httpServer.ListenAndServe(); err != nil {
+			log.Fatal("Unable to start a http server.")
+		}
+	}()
+
 	for i := 0; i < 100; i++ {
 		port := 9000
 		host := "grpcgoonch-service"
 		opts := []grpc.DialOption{
+			grpc.WithUnaryInterceptor(grpcMetrics.UnaryClientInterceptor()),
 			grpc.WithInsecure(),
 			grpc.WithBlock(),
 			grpc.WithDefaultServiceConfig(`{"loadBalancingPolicy":"round_robin"}`),
