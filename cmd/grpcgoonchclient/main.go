@@ -16,6 +16,11 @@ import (
 	"google.golang.org/grpc/grpclog"
 )
 
+var (
+	port     = 9000
+	promPort = 9095
+)
+
 func doClientThings() {
 	reg := prometheus.NewRegistry()
 	grpcMetrics := grpc_prometheus.NewClientMetrics()
@@ -24,17 +29,16 @@ func doClientThings() {
 	// Create an http server for prometheus
 	httpServer := &http.Server{
 		Handler: promhttp.HandlerFor(reg, promhttp.HandlerOpts{}),
-		Addr:    fmt.Sprintf("0.0.0.0:%d", 9094)}
+		Addr:    fmt.Sprintf(":%d", promPort)}
 
 	// Start http server for prometheus
 	go func() {
 		if err := httpServer.ListenAndServe(); err != nil {
-			log.Fatal("Unable to start a http server.")
+			log.Fatalf("Error starting http server: %v", err)
 		}
 	}()
 
 	for i := 0; i < 100; i++ {
-		port := 9000
 		host := "grpcgoonch-service"
 		opts := []grpc.DialOption{
 			grpc.WithUnaryInterceptor(grpcMetrics.UnaryClientInterceptor()),
