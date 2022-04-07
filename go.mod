@@ -7,7 +7,7 @@ require (
 	github.com/prometheus/client_golang v1.12.1
 	github.com/thaigoonch/grpcgoonch v0.0.0-20220407022802-275d9a84c25d
 	golang.org/x/net v0.0.0-20220403103023-749bd193bc2b
-	google.golang.org/grpc v1.45.0
+	google.golang.org/grpc v1.44.0
 )
 
 require (
@@ -20,6 +20,6 @@ require (
 	github.com/prometheus/procfs v0.7.3 // indirect
 	golang.org/x/sys v0.0.0-20220406163625-3f8b81556e12 // indirect
 	golang.org/x/text v0.3.7 // indirect
-	google.golang.org/genproto v0.0.0-20220405205423-9d709892a2bf // indirect
+	google.golang.org/genproto v0.0.0-20220218161850-94dd64e39d7c // indirect
 	google.golang.org/protobuf v1.28.0 // indirect
 )

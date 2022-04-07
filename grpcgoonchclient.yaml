@@ -15,7 +15,7 @@ spec:
         spec:
           containers:
           - name: grpcgoonchclient
-            image: thaigoonch/grpcgoonchclient:1.26
+            image: thaigoonch/grpcgoonchclient:1.27
             imagePullPolicy: IfNotPresent
           restartPolicy: Never
           nodeSelector:
