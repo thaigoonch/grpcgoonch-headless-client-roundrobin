@@ -27,8 +27,8 @@ func doClientThings(grpcMetrics *grpc_prometheus.ClientMetrics) {
 		host := "grpcgoonch-service"
 		opts := []grpc.DialOption{
 			grpc.WithUnaryInterceptor(grpcMetrics.UnaryClientInterceptor()),
+			grpc.WithDefaultServiceConfig(`{"loadBalancingConfig": [{"round_robin":{}}]}`),
 			grpc.WithTransportCredentials(insecure.NewCredentials()),
-			grpc.WithDefaultServiceConfig(`{"loadBalancingPolicy":"round_robin"}`),
 			grpc.WithTimeout(20 * time.Second),
 		}
 		conn, err := grpc.Dial(fmt.Sprintf("dns:///%s:%d", host, port), opts...)
