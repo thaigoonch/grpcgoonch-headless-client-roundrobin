@@ -13,7 +13,7 @@ import (
 	grpcgoonch "github.com/thaigoonch/grpcgoonch/service"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials/insecure"
+	"google.golang.org/grpc/balancer/roundrobin"
 	"google.golang.org/grpc/grpclog"
 )
 
@@ -26,10 +26,9 @@ func doClientThings(grpcMetrics *grpc_prometheus.ClientMetrics) {
 	for i := 0; i < 100; i++ {
 		host := "grpcgoonch-service"
 		opts := []grpc.DialOption{
+			grpc.WithInsecure(),
+			grpc.WithBalancerName(roundrobin.Name),
 			grpc.WithUnaryInterceptor(grpcMetrics.UnaryClientInterceptor()),
-			grpc.WithDefaultServiceConfig(`{"loadBalancingConfig": [{"round_robin":{}}]}`),
-			grpc.WithTransportCredentials(insecure.NewCredentials()),
-			grpc.WithTimeout(20 * time.Second),
 		}
 		conn, err := grpc.Dial(fmt.Sprintf("dns:///%s:%d", host, port), opts...)
 		if err != nil {
