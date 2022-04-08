@@ -17,6 +17,10 @@ spec:
           - name: grpcgoonchclient
             image: thaigoonch/grpcgoonchclient:1.28
             imagePullPolicy: IfNotPresent
+          - args:
+            env:
+            - name: LOG_LEVEL
+              value: "DEBUG"
           restartPolicy: Never
           nodeSelector:
             goonchrole: "nonserver"
