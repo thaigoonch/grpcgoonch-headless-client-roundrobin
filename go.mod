@@ -7,7 +7,7 @@ require (
 	github.com/prometheus/client_golang v1.12.1
 	github.com/thaigoonch/grpcgoonch v0.0.0-20220407022802-275d9a84c25d
 	golang.org/x/net v0.0.0-20220403103023-749bd193bc2b
-	google.golang.org/grpc v1.44.0
+	google.golang.org/grpc v1.45.0
 )
 
 require (

@@ -4,8 +4,6 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"sync"
-	"time"
 
 	grpc_prometheus "github.com/grpc-ecosystem/go-grpc-prometheus"
 	"github.com/prometheus/client_golang/prometheus"
@@ -55,11 +53,6 @@ func doClientThings(grpcMetrics *grpc_prometheus.ClientMetrics) {
 }
 
 func main() {
-	start := time.Now()
-	defer func() {
-		fmt.Println("Execution Time: ", time.Since(start))
-	}()
-
 	reg := prometheus.NewRegistry()
 	grpcMetrics := grpc_prometheus.NewClientMetrics()
 	reg.MustRegister(grpcMetrics)
@@ -76,14 +69,7 @@ func main() {
 		}
 	}()
 
-	wg := sync.WaitGroup{}
-
 	for i := 0; i < 11; i++ {
-		wg.Add(1)
-		go func() {
-			doClientThings(grpcMetrics)
-			wg.Done()
-		}()
+		doClientThings(grpcMetrics)
 	}
-	wg.Wait()
 }
