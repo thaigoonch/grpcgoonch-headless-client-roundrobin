@@ -15,7 +15,7 @@ spec:
         spec:
           containers:
           - name: grpcgoonchclient
-            image: thaigoonch/grpcgoonchclient:1.30
+            image: thaigoonch/grpcgoonchclient:1.31
             imagePullPolicy: IfNotPresent
             env:
             - name: LOG_LEVEL
