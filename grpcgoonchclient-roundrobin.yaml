@@ -15,7 +15,7 @@ spec:
         spec:
           containers:
           - name: grpcgoonchclient-roundrobin
-            image: thaigoonch/grpcgoonchclient-roundrobin:1.0
+            image: thaigoonch/grpcgoonchclient-roundrobin:1.1
             imagePullPolicy: IfNotPresent
             env:
             - name: LOG_LEVEL
