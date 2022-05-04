@@ -17,7 +17,7 @@ require (
 	github.com/prometheus/client_model v0.2.0 // indirect
 	github.com/prometheus/common v0.34.0 // indirect
 	github.com/prometheus/procfs v0.7.3 // indirect
-	github.com/thaigoonch/grpcgoonch-headless v0.0.0-20220504004121-06e14e0c07aa
+	github.com/thaigoonch/grpcgoonch-headless v0.0.0-20220504063302-0b8bd654673e
 	golang.org/x/sys v0.0.0-20220503163025-988cb79eb6c6 // indirect
 	golang.org/x/text v0.3.7 // indirect
 	google.golang.org/genproto v0.0.0-20220503193339-ba3ae3f07e29 // indirect
