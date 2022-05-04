@@ -1,4 +1,4 @@
-module github.com/thaigoonch/grpcgoonchclient-roundrobin
+module github.com/thaigoonch/grpcgoonch-headless-client-roundrobin
 
 go 1.17
 
