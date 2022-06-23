@@ -27,7 +27,7 @@ func main() {
 	reg := prometheus.NewRegistry()
 	reg.MustRegister(reqsMetrics)
 
-	pusher := push.New("http://localhost:9091", "grpcgoonch-headless-client-roundrobin_metrics").Gatherer(reg)
+	pusher := push.New("http://localhost:9091", "grpcgoonchheadlessclientroundrobin_metrics").Gatherer(reg)
 
 	host := "grpcgoonch-headless-service"
 	opts := []grpc.DialOption{
