@@ -3,8 +3,7 @@ module github.com/thaigoonch/grpcgoonch-headless-client-roundrobin
 go 1.17
 
 require (
-	github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0
-	github.com/prometheus/client_golang v1.12.1
+	github.com/prometheus/client_golang v1.12.2
 	golang.org/x/net v0.0.0-20220531201128-c960675eff93
 	google.golang.org/grpc v1.47.0
 )
