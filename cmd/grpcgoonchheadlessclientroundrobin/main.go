@@ -33,7 +33,7 @@ func init() {
 }
 
 func main() {
-	pusher := push.New("http://prometheus-pushgateway:9091", "grpcgoonchheadlessclientroundrobin").Gatherer(reg)
+	pusher := push.New("http://prometheus-pushgateway:9091", "grpcgoonchheadlessclientroundrobin_pusher").Gatherer(reg)
 
 	host := "grpcgoonch-headless-service"
 	opts := []grpc.DialOption{
@@ -69,11 +69,11 @@ func main() {
 			wg.Done()
 		}()
 	}
+	wg.Wait()
 
 	if err := pusher.Add(); err != nil {
 		log.Printf("Could not push to Pushgateway: %v", err)
 	} else {
 		log.Printf("Pushed to the Pushgateway")
 	}
-	wg.Wait()
 }
