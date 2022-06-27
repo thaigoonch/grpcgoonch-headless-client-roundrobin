@@ -27,7 +27,7 @@ func main() {
 	reg := prometheus.NewRegistry()
 	reg.MustRegister(reqsMetrics)
 
-	pusher := push.New("http://localhost:9091", "grpcgoonchheadlessclientroundrobin_metrics").Gatherer(reg)
+	pusher := push.New("http://prometheus-pushgateway:9091", "grpcgoonchheadlessclientroundrobin").Gatherer(reg)
 
 	host := "grpcgoonch-headless-service"
 	opts := []grpc.DialOption{
@@ -47,9 +47,7 @@ func main() {
 		Text: text,
 		Key:  key,
 	}
-	reqsMetrics.Inc() // TODO: move these to work with the concurrency
-	// Add is used here rather than Push to not delete a previously pushed
-	// success timestamp in case of a failure of this backup.
+
 	if err := pusher.Add(); err != nil {
 		log.Printf("Could not push to Pushgateway: %v", err)
 	}
@@ -64,6 +62,7 @@ func main() {
 					grpclog.Fatalf("Error when calling CryptoRequest(): %v", err)
 				}
 				log.Printf("Response from Goonch Server: %s", response.Result)
+				reqsMetrics.Inc()
 			}
 			wg.Done()
 		}()
