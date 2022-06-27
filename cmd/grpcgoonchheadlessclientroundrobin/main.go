@@ -17,16 +17,22 @@ import (
 
 var (
 	port        = 9000
+	reg         = prometheus.NewRegistry()
 	reqsMetrics = prometheus.NewGauge(prometheus.GaugeOpts{
 		Name: "grpcgoonchheadlessclientroundrobin_requests_sent_total",
 		Help: "The number of records sent from grpcgoonch-headless-client-roundrobin",
 	})
 )
 
-func main() {
-	reg := prometheus.NewRegistry()
+func init() {
 	reg.MustRegister(reqsMetrics)
+	_, err := reg.Gather()
+	if err != nil {
+		log.Fatalf("Prometheus metric registration error: %v", err)
+	}
+}
 
+func main() {
 	pusher := push.New("http://prometheus-pushgateway:9091", "grpcgoonchheadlessclientroundrobin").Gatherer(reg)
 
 	host := "grpcgoonch-headless-service"
@@ -48,10 +54,6 @@ func main() {
 		Key:  key,
 	}
 
-	if err := pusher.Add(); err != nil {
-		log.Printf("Could not push to Pushgateway: %v", err)
-	}
-
 	wg := sync.WaitGroup{}
 	for i := 0; i < 10; i++ {
 		wg.Add(1)
@@ -68,4 +70,8 @@ func main() {
 		}()
 	}
 	wg.Wait()
+
+	if err := pusher.Add(); err != nil {
+		log.Printf("Could not push to Pushgateway: %v", err)
+	}
 }
