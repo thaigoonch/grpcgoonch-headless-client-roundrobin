@@ -69,9 +69,11 @@ func main() {
 			wg.Done()
 		}()
 	}
-	wg.Wait()
 
 	if err := pusher.Add(); err != nil {
 		log.Printf("Could not push to Pushgateway: %v", err)
+	} else {
+		log.Printf("Pushed to the Pushgateway")
 	}
+	wg.Wait()
 }
